@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  
+  url      = "postgresql://postgres:Hogwarts13@localhost:5432/wwh"
+  // url      = "postgresql://janedoe:mypassword@localhost:5432/mydb?schema=sample"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String  @unique
+  password  String
+  image     String?
+  address   String?
+  phone     String?
+  orders    Order[]
+  cart      Cart?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  description String?
+  products    Product[]
+}
+
+model Product {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  stock       Int
+  imageUrl    String
+  categoryId  Int
+  category    Category  @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Cart {
+  id          Int       @id @default(autoincrement())
+  userId      Int       @unique
+  items       Json
+  totalAmount Float
+  user        User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Order {
+  id             Int       @id @default(autoincrement())
+  userId         Int       
+  totalAmount    Float
+  shippingAddress String
+  status         String   @default("Pending")
+  paymentStatus  String   @default("Pending")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  user           User     @relation(fields: [userId], references: [id])
+  items          Json
+  payment        Payment?
+}
+
+model Payment {
+  id          Int       @id @default(autoincrement())
+  orderId     Int       @unique
+  amount      Float
+  method      String
+  status      String   @default("Pending")
+  transactionId String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  order       Order    @relation(fields: [orderId], references: [id])
+}
