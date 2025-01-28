@@ -1,14 +1,15 @@
-import prisma from "../../../lib/prisma";
+// import prisma from "../../../lib/prisma";
+import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request, { params }: { params: { id: string } }) {
-  const category = await prisma.category.findUnique({
+  const categories = await prisma.category.findUnique({
     where: { id: parseInt(params.id) },
   });
 
-  if (!category) {
+  if (!categories) {
     return NextResponse.json({ error: "Category not found" }, { status: 404 });
   }
 
-  return NextResponse.json(category, { status: 200 });
+  return NextResponse.json(categories, { status: 200 });
 }
