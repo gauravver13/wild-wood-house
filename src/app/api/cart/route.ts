@@ -14,6 +14,8 @@ export async function GET(request: NextRequest) {
 }
 
 
+
+// needs to be changed - more polished
 export async function POST(request: NextRequest) {
     const decoded = authenticate(request);
     const userId = decoded?.userId;
