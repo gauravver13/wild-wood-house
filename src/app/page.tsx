@@ -8,10 +8,11 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+      
       <main className="flex-grow">
         {/* Hero Section */}
         <section
-          style={{ backgroundColor: "var(--color-primary)", color: "var(--color-background)", padding: "5rem 0" }}
+          style={{ backgroundColor: "var(color-primary)", color: "var(--color-background)", padding: "5rem 0" }}
         >
           <div className="container mx-auto text-center">
             <h1
@@ -187,6 +188,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   )

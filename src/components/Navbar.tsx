@@ -1,41 +1,34 @@
-"use client"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-
-const categories = ["Living Room", "Bedroom", "Dining Room", "Office", "Outdoor", "Decor"]
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Input } from "@/components/ui/input";
+import { ShoppingCart, User } from "lucide-react";
 
 export function Navbar() {
   return (
-    <nav style={{ backgroundColor: "var(--color-background)", padding: "1rem 0" }}>
-      <div className="container mx-auto flex justify-between items-center">
-        <Link
-          href="/"
-          style={{
-            fontSize: "var(--font-size-2xl)",
-            fontWeight: "var(--font-weight-bold)",
-            color: "var(--color-primary)",
-          }}
-        >
-          FurniCraft
-        </Link>
-        <ul className="hidden md:flex space-x-6">
-          {categories.map((category) => (
-            <li key={category}>
-              <Link
-                href={`/category/${category.toLowerCase().replace(" ", "-")}`}
-                style={{ color: "var(--color-text)" }}
-              >
-                {category}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div className="flex space-x-2">
-          <Button variant="outline">Login</Button>
-          <Button>Sign Up</Button>
-        </div>
+    <header className="w-full bg-white shadow-md p-4 flex justify-between items-center fixed">
+      <Link href="/" className="text-2xl font-serif font-bold">Wild-Wood-House</Link>
+      
+      <div className="flex items-center space-x-4 w-1/3">
+        <Input type="text" placeholder="Search..." className="w-full px-4 py-2 border rounded-md" />
       </div>
-    </nav>
-  )
+      
+      <div className="flex items-center space-x-4">
+        <Link href="/cart">
+          <ShoppingCart className="w-6 h-6 cursor-pointer" />
+        </Link>
+        <Link href="/login">
+          <Button variant="outline">Login</Button>
+        </Link>
+        <Link href="/signup">
+          <Button>Signup</Button>
+        </Link>
+        <Link href="/profile">
+          <User className="w-6 h-6 cursor-pointer" />
+        </Link>
+      </div>
+    </header>
+  );
 }
 
+
+const categories = ["Living Room", "Bedroom", "Dining Room", "Office", "Outdoor", "Decor"]
