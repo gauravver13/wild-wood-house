@@ -1,18 +1,58 @@
-import NextAuth from "next-auth";
-import { NextAuthOptions } from "next-auth";
+import NextAuth, { Session, NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "@/lib/prisma";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+customToken?: string | null;
+    };
+  }
+}
+
+const JWT_SECRET = process.env.JWT_SECRET as string;
 
 export const authOptions: NextAuthOptions = {
-//   adapter: PrismaAdapter(prisma),
-
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      async profile(profile) {
+        // 1. Generate secure password
+        const defaultPassword = "google_" + Math.random().toString(36).slice(-8);
+        const hashedPassword = await bcrypt.hash(defaultPassword, 10);
+
+        // 2. Upsert user
+        const user = await prisma.user.upsert({
+          // Find user by email
+          where: { email: profile.email },
+          // Don't update existing users
+          update: {},
+          // Create new user if not found
+          create: {
+            email: profile.email,
+            name: profile.name,
+            image: profile.picture,
+            password: hashedPassword,
+          },
+        });
+
+        
+        // // 3. Return safe user data
+        // return {
+        //   id: user.id.toString(),
+        //   name: user.name,
+        //   email: user.email,
+        //   image: user.image,
+        // };
+      },
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -31,20 +71,73 @@ export const authOptions: NextAuthOptions = {
 
         const isValidPassword = await bcrypt.compare(credentials.password, user.password);
         if (!isValidPassword) return null;
-        console.log(user);
-        console.log("user name", );
 
         return {
           id: user.id.toString(),
           name: user.name,
           email: user.email,
           image: user.image,
-
         };
       },
     }),
   ],
   session: { strategy: "jwt" },
+  callbacks: {
+    async jwt({ token, user, account }) {
+      if (account && user) {
+// Add custom claims to token
+        token.userId = user.id;
+// Generate custom JWT
+        const customToken = jwt.sign(
+          { userId: user.id, email: user.email },
+          process.env.JWT_SECRET!,
+          { expiresIn: '1d' }
+        );
+        token.customToken = customToken;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+// Add custom token to session
+        session.user.id = token.userId as string;
+        session.user.customToken = token.customToken as string;
+      }
+      return session;
+    },
+
+    async signIn({ user }) {
+      try {
+        // Check if the user already exists in DB
+        let existingUser = await prisma.user.findUnique({
+          where: { email: user.email! },
+        });
+
+        if (!existingUser) {
+          const password = "zxcvbnm"
+          const hashedPassword = await bcrypt.hash(password, 10);
+          // Create new user if not found
+          existingUser = await prisma.user.create({
+              data: {
+                email: user.email!,
+                name: user.name!,
+                image: user.image!,
+                password: hashedPassword,
+              }
+          });
+        }
+
+
+        return true; // Allow login
+      } catch (error) {
+        console.error("Error saving user:", error);
+        return false; // Reject login if DB error
+      }
+    },
+  },
+pages: {
+    signIn: '/login',
+  },
   secret: process.env.NEXTAUTH_SECRET,
 };
 
