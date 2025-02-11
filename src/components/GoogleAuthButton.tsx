@@ -1,15 +1,20 @@
-import { Button } from "@/components/ui/button"
-import { FcGoogle } from "react-icons/fc"
+import { signIn } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { FcGoogle } from "react-icons/fc";
 
 interface GoogleAuthButtonProps {
-  action: "Sign up" | "Log in"
+  action: "Sign up" | "Log in";
 }
 
 export function GoogleAuthButton({ action }: GoogleAuthButtonProps) {
   return (
-    <Button variant="outline" className="w-full">
+    <Button
+      variant="outline"
+      className="w-full"
+      onClick={() => signIn("google")}
+    >
       <FcGoogle className="mr-2 h-4 w-4" />
       {action} with Google
     </Button>
-  )
+  );
 }

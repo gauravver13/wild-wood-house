@@ -23,5 +23,8 @@ export async function POST(request: Request) {
 
   const token = generateToken(user.id);
 
+  console.log('TOKEN:', token);
+  console.log('USER:', user);
+
   return NextResponse.json({ token }, { status: 200 });
 }

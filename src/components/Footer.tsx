@@ -12,14 +12,17 @@ export function Footer() {
 
   return (
     <footer className="bg-black text-white p-6 md:p-10">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div className="max-w-5xl mx-auto grid sm:grid-cols-1  grid-cols-1 md:grid-cols-3 gap-8 md:gap-1">
         {/* Left Section */}
         <div>
-          <h3 className="text-3xl md:text-4xl font-bold text-green-500">Have a Project?</h3>
+          <p className="font-medium text-accent mb-6">CONTACT US</p>
+          <h3 className="text-3xl md:text-4xl font-bold text-secondary">Have a Project?</h3>
         </div>
 
+        {/* Vertical Line */}
+            <div className="hidden md:block border-l border-gray-500 h-28 ml-16"></div>
         {/* Right Section - Contact Form */}
-        <div>
+        <div className="md:col-span-2">
           <h4 className="text-lg mb-4">What can we do for you?</h4>
           <div className="flex flex-wrap gap-2 mb-4">
             {["Interior Design", "Furniture Design", "Room Design", "Design Consultancy"].map((service) => (

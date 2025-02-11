@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import axios from "axios"
 import { GoogleAuthButton } from "@/components/GoogleAuthButton"
 import { toast } from "sonner"
 
@@ -35,24 +36,24 @@ export default function LoginPage() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("/api/user/login", {
-        method: "POST",
+      const response = await axios.post("/api/user/login", {
+        email: formData.email,
+        password: formData.password
+      }, {
         headers: {
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password
-        })
+        }
       })
 
-      const data = await response.json()
+      const data = response.data
 
-      if (!response.ok) {
+      console.log('DATA:', data);
+
+      if (response.status !== 200) {
         throw new Error(data.error || "Login failed")
       }
 
-      //TODO: NOTE:: Set Cookies for more ads! Store auth token::
+      // Store token
       if (formData.rememberMe) {
         localStorage.setItem("Authorization", data.token)
       } else {
@@ -67,6 +68,7 @@ export default function LoginPage() {
       setIsLoading(false)
     }
   }
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">

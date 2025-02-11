@@ -3,16 +3,11 @@
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import type { Metadata } from "next"
+import axios from "axios"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { GoogleAuthButton } from "@/components/GoogleAuthButton"
 import { toast } from "sonner"
-
-// export const metadata: Metadata = {
-//   title: "Sign Up | FurniCraft",
-//   description: "Create a new FurniCraft account",
-// }
 
 export default function SignUpPage() {
   const router = useRouter()
@@ -35,18 +30,14 @@ export default function SignUpPage() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("/api/user/signup", {
-        method: "POST",
+      const response = await axios.post("/api/user/signup", formData, {
         headers: {
           "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
+        }
       })
 
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || "Signup failed")
+      if (response.status !== 200) {
+        throw new Error(response.data.error || "Signup failed")
       }
 
       toast.success("Account created successfully!")
