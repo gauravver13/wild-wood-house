@@ -10,24 +10,35 @@ export default function Home() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section
-          style={{ backgroundColor: "var(color-primary)", color: "var(--color-background)", padding: "5rem 0" }}
-        >
-          <div className="container mx-auto text-center">
-            <h1
-              style={{
-                fontSize: "var(--font-size-5xl)",
-                fontWeight: "var(--font-weight-bold)",
-                marginBottom: "1.5rem",
-              }}
-            >
+        {/* Hero Section with Banner */}
+        <section className="relative h-[600px]">
+          {/* Banner Image */}
+          <div className="absolute inset-0">
+            <Image
+              src="/banner0.webp"
+              alt="Elegant Furniture Collection"
+              fill
+              className="object-cover brightness-50"
+              sizes="100vw"
+              priority
+              quality={100}
+            />
+          </div>
+
+          {/* Content Overlay */}
+          <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-white text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-4xl">
               Transform Your Space with Elegant Furniture
             </h1>
-            <p style={{ fontSize: "var(--font-size-xl)", marginBottom: "2rem" }}>
+            <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-2xl">
               Discover our curated collection of stylish and comfortable pieces for every room.
             </p>
-            <Button size="lg">Shop Now</Button>
+            <Button 
+              size="lg"
+              className="bg-white text-black hover:bg-gray-100 transition-colors px-8 py-3 text-lg"
+            >
+              Shop Now
+            </Button>
           </div>
         </section>
 
