@@ -9,13 +9,13 @@ export default function Home() {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
-      <main className="flex-grow">
+      <main className="flex-grow ">
         {/* Hero Section with Banner */}
         <section className="relative h-[600px]">
           {/* Banner Image */}
           <div className="absolute inset-0">
             <Image
-              src="/banner0.webp"
+              src="/banner1.jpg"
               alt="Elegant Furniture Collection"
               fill
               className="object-cover brightness-50"

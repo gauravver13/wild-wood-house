@@ -1,4 +1,4 @@
-"use client";
+
 
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
@@ -41,6 +41,11 @@ export function GoogleAuthButton({ action }: GoogleAuthButtonProps) {
 
           if (data.token) {
             console.log('Storing token in localStorage...');
+
+            localStorage.setItem("Authorization", data.token);
+            sessionStorage.setItem("Authorization", data.token);
+
+
             setAuthToken(data.token);
             
             toast.success("Signed in successfully!");

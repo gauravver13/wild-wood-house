@@ -24,35 +24,35 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      async profile(profile) {
-        // 1. Generate secure password
-        const defaultPassword = "google_" + Math.random().toString(36).slice(-8);
-        const hashedPassword = await bcrypt.hash(defaultPassword, 10);
+      // async profile(profile) {
+      //   // 1. Generate secure password
+      //   const defaultPassword = "google_" + Math.random().toString(36).slice(-8);
+      //   const hashedPassword = await bcrypt.hash(defaultPassword, 10);
 
-        // 2. Upsert user
-        const user = await prisma.user.upsert({
-          // Find user by email
-          where: { email: profile.email },
-          // Don't update existing users
-          update: {},
-          // Create new user if not found
-          create: {
-            email: profile.email,
-            name: profile.name,
-            image: profile.picture,
-            password: hashedPassword,
-          },
-        });
+      //   // 2. Upsert user
+      //   const user = await prisma.user.upsert({
+      //     // Find user by email
+      //     where: { email: profile.email },
+      //     // Don't update existing users
+      //     update: {},
+      //     // Create new user if not found
+      //     create: {
+      //       email: profile.email,
+      //       name: profile.name,
+      //       image: profile.picture,
+      //       password: hashedPassword,
+      //     },
+      //   });
 
         
-        // // 3. Return safe user data
-        // return {
-        //   id: user.id.toString(),
-        //   name: user.name,
-        //   email: user.email,
-        //   image: user.image,
-        // };
-      },
+      //   // // 3. Return safe user data
+      //   // return {
+      //   //   id: user.id.toString(),
+      //   //   name: user.name,
+      //   //   email: user.email,
+      //   //   image: user.image,
+      //   // };
+      // },
     }),
     CredentialsProvider({
       name: "Credentials",
@@ -81,19 +81,26 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+
   session: { strategy: "jwt" },
   callbacks: {
     async jwt({ token, user, account }) {
       if (account && user) {
 // Add custom claims to token
         token.userId = user.id;
+        // console.log("user", user);
+        // console.log("account", account);
 // Generate custom JWT
         const customToken = jwt.sign(
-          { userId: user.id, email: user.email },
+          { 
+            userId: user.id,
+            email: user.email
+          },
           process.env.JWT_SECRET!,
           { expiresIn: '1d' }
         );
         token.customToken = customToken;
+        // console.log("token", token);
       }
       return token;
     },
@@ -103,10 +110,12 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.userId as string;
         session.user.customToken = token.customToken as string;
       }
+      console.log("session", session);
       return session;
     },
 
-    async signIn({ user }) {
+    async signIn({ user, account }) {
+      // console.log("signIn callback:: ", user, account);
       try {
         // Check if the user already exists in DB
         let existingUser = await prisma.user.findUnique({
@@ -127,7 +136,6 @@ export const authOptions: NextAuthOptions = {
           });
         }
 
-
         return true; // Allow login
       } catch (error) {
         console.error("Error saving user:", error);
@@ -136,7 +144,10 @@ export const authOptions: NextAuthOptions = {
     },
   },
 pages: {
-    signIn: '/login',
+    signIn: '/',
+    // signOut: '/',
+    // error: '/auth/error', // Error code passed in query string as ?error=
+    // verifyRequest: '/auth/verify-request', // (used for check email message)
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

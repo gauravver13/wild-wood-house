@@ -7,6 +7,8 @@ import axios from "axios";
 export async function GET() {
   try {
     const session = await getServerSession(authOptions);
+    console.log('Session:', session);
+    
     
     if (!session?.user) {
       return NextResponse.json(
@@ -14,6 +16,9 @@ export async function GET() {
         { status: 401 }
       );
     }
+
+    // console.log('Session user:', session.user);
+    // console.log('Session Token:', session.token);
 
     // Generate JWT token
     const token = jwt.sign(

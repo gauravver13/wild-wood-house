@@ -13,6 +13,8 @@ export function getAuthToken(): string | null {
 
 export function removeAuthToken() {
   localStorage.removeItem(AUTH_TOKEN_KEY);
+  sessionStorage.removeItem(AUTH_TOKEN_KEY);
+  console.log('Token removed from localStorage and sessionStorage');
 }
 
 export function isAuthenticated(): boolean {
