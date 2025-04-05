@@ -83,7 +83,10 @@ export const authOptions: NextAuthOptions = {
   ],
 
   session: { strategy: "jwt" },
+
   callbacks: {
+
+    //check out here what exactly account is
     async jwt({ token, user, account }) {
       if (account && user) {
 // Add custom claims to token
@@ -99,6 +102,7 @@ export const authOptions: NextAuthOptions = {
           process.env.JWT_SECRET!,
           { expiresIn: '1d' }
         );
+        
         token.customToken = customToken;
         // console.log("token", token);
       }
@@ -143,7 +147,7 @@ export const authOptions: NextAuthOptions = {
       }
     },
   },
-pages: {
+  pages: {
     signIn: '/',
     // signOut: '/',
     // error: '/auth/error', // Error code passed in query string as ?error=
@@ -152,5 +156,5 @@ pages: {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+// const handler = NextAuth(authOptions);
+// export { handler as GET, handler as POST };
