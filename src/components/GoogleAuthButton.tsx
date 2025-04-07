@@ -12,6 +12,8 @@ interface GoogleAuthButtonProps {
   action: "Sign up" | "Log in";
 }
 
+// replace use Router 
+
 export function GoogleAuthButton({ action }: GoogleAuthButtonProps) {
   const router = useRouter();
 
@@ -35,6 +37,8 @@ export function GoogleAuthButton({ action }: GoogleAuthButtonProps) {
       if (result?.ok) {
         console.log('Google sign-in successful, fetching session...');
         
+
+        //TODO: COME CHECK THIS:
         try {
           const { data } = await axios.get('/api/auth/session');
           console.log('Session data received:', data);
