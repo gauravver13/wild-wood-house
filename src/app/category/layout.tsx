@@ -9,9 +9,7 @@ export default function ProductsLayout({
 }) {
   return (
     <>
-      <Navbar />
       {children}
-      <Footer />
     </>
   )
 }

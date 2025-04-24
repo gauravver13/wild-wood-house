@@ -1,94 +1,115 @@
-'use client';
+"use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaPinterestP,
+  FaLinkedinIn,
+} from "react-icons/fa";
 
 export function Footer() {
-  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [email, setEmail] = useState("");
+  const [agreed, setAgreed] = useState(false);
 
   return (
-    <footer className="bg-black text-white p-6 md:p-10">
-      <div className="max-w-5xl mx-auto grid sm:grid-cols-1  grid-cols-1 md:grid-cols-3 gap-8 md:gap-1">
-        {/* Left Section */}
-        <div>
-          <p className="font-medium text-accent mb-6">CONTACT US</p>
-          <h3 className="text-3xl md:text-4xl font-bold text-secondary">Have a Project?</h3>
-        </div>
+    <footer className="bg-[#f6f0e8] text-[#9b3f24] w-full">
+      {/* Newsletter Section */}
+      <div className="py-12 px-4 md:px-10 text-center flex flex-col items-center justify-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-3">BE IN THE LOOP</h2>
+        <p className="max-w-2xl italic mb-6 px-2 text-sm md:text-sm">
+          Enjoy a <span className="font-semibold">10% discount</span> on your
+          initial online purchase by using the code{" "}
+          <span className="font-bold not-italic"> WILD WOOD HOUSE </span> during
+          checkout and stay ahead with exclusive updates on new collections,
+          store openings, sales, and more!
+        </p>
 
-        {/* Vertical Line */}
-            <div className="hidden md:block border-l border-gray-500 h-28 ml-16"></div>
-        {/* Right Section - Contact Form */}
-        <div className="md:col-span-2">
-          <h4 className="text-lg mb-4">What can we do for you?</h4>
-          <div className="flex flex-wrap gap-2 mb-4">
-            {["Interior Design", "Furniture Design", "Room Design", "Design Consultancy"].map((service) => (
-              <button
-                key={service}
-                onClick={() => setSelectedService(service)}
-                className={cn(
-                  "px-4 py-2 border rounded-lg text-white transition text-sm md:text-base",
-                  selectedService === service ? "bg-gray-700" : "border-gray-500"
-                )}
-              >
-                {service}
-              </button>
-            ))}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log("Email:", email, "Agreed:", agreed);
+          }}
+          className="flex flex-col items-center gap-4 w-full max-w-xl"
+        >
+          <div className="relative w-full">
+            <input
+              type="email"
+              placeholder="Email"
+              className="w-full py-4 px-4 pr-12 border border-[#e6dcd2] rounded-sm text-[#9b3f24] bg-transparent placeholder-[#c78b71] focus:outline-none"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button
+              type="submit"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-[#9b3f24] hover:text-[#7a2e1a] transition-colors"
+            >
+              <ArrowRight />
+            </button>
           </div>
-          <Input type="text" placeholder="Your Name" className="mb-3 bg-gray-800 border-gray-600 text-white w-full" />
-          <Input type="text" placeholder="Project Details" className="mb-3 bg-gray-800 border-gray-600 text-white w-full" />
-          <Input type="email" placeholder="Your Email" className="mb-3 bg-gray-800 border-gray-600 text-white w-full" />
-          <Button className="bg-white text-black px-6 py-2 rounded-lg border border-green-500 hover:bg-gray-200 w-full md:w-auto">
-            Submit →
-          </Button>
+
+          <div className="w-full text-left mt-1">
+            <label className="flex items-center gap-2 text-xs font-medium text-black">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="accent-[#9b3f24] w-4 h-4"
+                required
+              />
+              I agree to receiving marketing emails and special deals
+            </label>
+        </div>
+        </form>
+      </div>
+
+      {/* Contact + Links Section */}
+      <div className="border-t bg-slate-50 border-[#e6dcd2] py-12 px-4 md:px-10 text-[#9b3f24]">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-24 text-left">
+          {/* Get in Touch */}
+          <div className="text-sm">
+            <h3 className="font-bold uppercase tracking-wide mb-4">Get in Touch</h3>
+            <p className="mb-2">+91 9136473985</p>
+            <p className="mb-2">Mon - Sat - 10:30am - 07:30pm IST</p>
+            <p className="mb-2">info@unnamra.com</p>
+            <p className="mb-4">
+              Unnamra, Petit Hall Shopping Centre, 66, L Jaganmohandas Marg,
+              Mumbai 400006
+            </p>
+            <div className="flex gap-4 mt-2">
+              <FaFacebookF className="hover:text-blue-700 cursor-pointer" />
+              <FaInstagram className="hover:text-orange-500 cursor-pointer" />
+              <FaPinterestP className="hover:text-red-600 cursor-pointer" />
+              <FaLinkedinIn className="hover:text-blue-700 cursor-pointer" />
+            </div>
+          </div>
+
+          {/* Customer Service */}
+          <div>
+            <h3 className="font-bold uppercase tracking-wide mb-4">Customer Service</h3>
+            <ul className="space-y-2">
+              <li className="hover:underline cursor-pointer">Contact Us</li>
+              <li className="hover:underline cursor-pointer">Shipping and Returns</li>
+              <li className="hover:underline cursor-pointer">FAQ</li>
+            </ul>
+          </div>
+
+          {/* Corporate */}
+          <div>
+            <h3 className="font-bold uppercase tracking-wide mb-4">Corporate</h3>
+            <ul className="space-y-2">
+              <li className="hover:underline cursor-pointer">Privacy Policy</li>
+              <li className="hover:underline cursor-pointer">Terms of Service</li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      {/* Footer Links Section */}
-      <div className="border-t border-gray-600 mt-10 pt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
-        <div>
-          <h4 className="font-bold text-lg">FORMAT</h4>
-          <p className="text-gray-400">Furniture & Interior Designs</p>
-          <p className="text-gray-400 mt-2">H.J.E Wenckenbachweg 150A, 1114 AD Amsterdam-Duivendrecht</p>
-          <div className="flex justify-center md:justify-start gap-3 mt-3">
-            <Link href="#" passHref><Facebook size={20} className="text-gray-400" /></Link>
-            <Link href="#" passHref><Instagram size={20} className="text-gray-400" /></Link>
-            <Link href="#" passHref><Twitter size={20} className="text-gray-400" /></Link>
-          </div>
-        </div>
-
-        <div>
-          <h4 className="font-bold">PRODUCTS</h4>
-          <ul className="text-gray-400 space-y-1">
-            <li><Link href="#" passHref>Furniture</Link></li>
-            <li><Link href="#" passHref>Lighting</Link></li>
-            <li><Link href="#" passHref>Homeware</Link></li>
-            <li><Link href="#" passHref>Furnishing</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-bold">SUPPORT</h4>
-          <ul className="text-gray-400 space-y-1">
-            <li><Link href="#" passHref>FAQs</Link></li>
-            <li><Link href="#" passHref>Contact Us</Link></li>
-            <li><Link href="#" passHref>Locate Us</Link></li>
-            <li><Link href="#" passHref>Our Stores</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="font-bold">LEGAL</h4>
-          <ul className="text-gray-400 space-y-1">
-            <li><Link href="#" passHref>Terms & Conditions</Link></li>
-            <li><Link href="#" passHref>Privacy Policy</Link></li>
-            <li><Link href="#" passHref>Cancellation & Refund</Link></li>
-            <li><Link href="#" passHref>Log In / Sign In</Link></li>
-          </ul>
-        </div>
+      {/* Bottom Line */}
+      <div className="text-center py-4 text-xs text-[#c78b71]">
+        © 2025 Unnamra, All rights reserved.
       </div>
     </footer>
   );
