@@ -119,6 +119,7 @@ export default function ProductsPage() {
 
       <div className="flex flex-col md:flex-row gap mb-8">
         {/* Uncomment below for filters */}
+
         {/* <div className="w-full md:w-1/4 space-y-6">
           <div>
             <Label htmlFor="search">Search</Label>
@@ -157,6 +158,11 @@ export default function ProductsPage() {
         <div className="w-full">
           <div className="text-sm text-gray-500 mb-4">
             Showing {filteredProducts.length} of {products.length} products
+          </div>
+
+          <div className="flex justify-between mx-12">
+            <div className="font-semibold text-md uppercase mb-4">Abcd</div>
+            <div className="text-sm text-gray-400 mb-4">{filteredProducts.length} products</div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
