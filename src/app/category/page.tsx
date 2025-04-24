@@ -2,6 +2,8 @@
 
 import { useState, useMemo } from "react"
 import ProductCard from "@/components/productCard"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Banner from "@/components/ui/banner"
 
 const products = [
   {
@@ -114,8 +116,14 @@ export default function ProductsPage() {
   }, [searchTerm, selectedCategory, priceRange])
 
   return (
-    <div className="container mx-auto py-16">
-      <h1 className="text-3xl font-bold mb-8">Our Products</h1>
+    <div className=" mx-auto py-16">
+      
+
+      {/* TODO: BANNER COMPONENT  */}
+      <div className="items-center">
+            <Banner title={"Our Products"} />
+      </div>
+
 
       <div className="flex flex-col md:flex-row gap mb-8">
         {/* Uncomment below for filters */}
@@ -156,12 +164,11 @@ export default function ProductsPage() {
         </div> */}
 
         <div className="w-full">
-          <div className="text-sm text-gray-500 mb-4">
-            Showing {filteredProducts.length} of {products.length} products
-          </div>
 
           <div className="flex justify-between mx-12">
-            <div className="font-semibold text-md uppercase mb-4">Abcd</div>
+            <div className="font-semibold text-sm uppercase mb-4">
+                  filters and sort
+            </div>
             <div className="text-sm text-gray-400 mb-4">{filteredProducts.length} products</div>
           </div>
 
