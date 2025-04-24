@@ -8,6 +8,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Slider } from "@/components/ui/slider"
 import Image from "next/image"
 import Link from "next/link"
+import ProductCard from "@/components/productCard"
 // import { products } from "@/lib/products"
 
 const products = [
@@ -17,7 +18,7 @@ const products = [
         slug: "product-1",
         category: "Category 1",
         price: 100,
-        image: "/product-1.jpg",
+        image: "/wine-holder.jpg",
     },
     {
         id: 2,
@@ -25,7 +26,7 @@ const products = [
         slug: "product-2",
         category: "Category 2",
         price: 200,
-        image: "/product-2.jpg",
+        image: "/wine-holder.jpg",
     },
     {
         id: 3,
@@ -33,7 +34,7 @@ const products = [
         slug: "product-3",
         category: "Category 1",
         price: 300,
-        image: "/product-3.jpg",
+        image: "/wine-holder.jpg",
     },
     {
         id: 4,
@@ -41,7 +42,7 @@ const products = [
         slug: "product-4",
         category: "Category 2",
         price: 400,
-        image: "/product-4.jpg",
+        image: "/wine-holder.jpg",
     },
     {
         id: 5,
@@ -49,7 +50,7 @@ const products = [
         slug: "product-5",
         category: "Category 1",
         price: 500,
-        image: "/product-5.jpg",
+        image: "/wine-holder.jpg",
     },
     {
         id: 6,
@@ -57,7 +58,7 @@ const products = [
         slug: "product-6",
         category: "Category 2",
         price: 600,
-        image: "/product-6.jpg",
+        image: "/wine-holder.jpg",
     },
     {
         id: 7,
@@ -65,7 +66,7 @@ const products = [
         slug: "product-7",
         category: "Category 1",
         price: 700,
-        image: "/product-7.jpg",
+        image: "/wine-holder.jpg",
     },
     {
         id: 8,
@@ -73,7 +74,7 @@ const products = [
         slug: "product-8",
         category: "Category 2",
         price: 800,
-        image: "/product-8.jpg",
+        image: "/wine-holder.jpg",
     },
     {
         id: 9,
@@ -81,7 +82,7 @@ const products = [
         slug: "product-9",
         category: "Category 1",
         price: 900,
-        image: "/product-9.jpg",
+        image: "/wine-holder.jpg",
     },
     {
         id: 10,
@@ -89,7 +90,7 @@ const products = [
         slug: "product-10",
         category: "Category 2",
         price: 1000,
-        image: "/product-10.jpg",
+        image: "/wine-holder.jpg",
     },
 ]
 
@@ -111,10 +112,12 @@ export default function ProductsPage() {
   }, [searchTerm, selectedCategory, priceRange])
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto py-16">
+
       <h1 className="text-3xl font-bold mb-8">Our Products</h1>
-      <div className="flex flex-col md:flex-row gap-8 mb-8">
-        <div className="w-full md:w-1/4 space-y-6">
+      <div className="flex flex-col md:flex-row gap mb-8">
+        
+        {/* <div className="w-full md:w-1/4 space-y-6">
           <div>
             <Label htmlFor="search">Search</Label>
             <Input
@@ -147,36 +150,50 @@ export default function ProductsPage() {
               <span>${priceRange[1]}</span>
             </div>
           </div>
-        </div>
-        <div className="w-full md:w-3/4">
+        </div> */}
+
+        <div className="w-full md:w-full">
           <div className="text-sm text-gray-500 mb-4">
             Showing {filteredProducts.length} of {products.length} products
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 border-2 border-black">
             {filteredProducts.map((product) => (
-              <Link href={`/products/${product.slug}`} key={product.id}>
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardHeader>
-                    <Image
-                      src={product.image || "/placeholder.svg"}
-                      alt={product.name}
-                      width={200}
-                      height={200}
-                      className="w-full h-48 object-cover"
-                    />
-                  </CardHeader>
-                  <CardContent>
-                    <CardTitle>{product.name}</CardTitle>
-                    <p className="text-sm text-gray-500">{product.category}</p>
-                  </CardContent>
-                  <CardFooter>
-                    <p className="text-lg font-bold">${product.price}</p>
-                  </CardFooter>
-                </Card>
-              </Link>
+              // <Link href={`/products/${product.slug}`} key={product.id}>
+              //   <Card className="hover:shadow-lg transition-shadow duration-300">
+              //     <CardHeader>
+              //       <Image
+              //         src={product.image || "/placeholder.svg"}
+              //         alt={product.name}
+              //         width={200}
+              //         height={200}
+              //         className="w-full h-full object-cover"
+              //       />
+              //     </CardHeader>
+              //     <CardContent>
+              //       <CardTitle className="justify-center">{product.name}</CardTitle>
+              //     </CardContent>
+              //     <CardFooter>
+              //       <p className="text-lg font-bold">${product.price}</p>
+              //     </CardFooter>
+              //   </Card>
+              // </Link>
+
+              //TODO: ErroroBoundary is here
+                            // <Link href={`/products/${product.slug}`} key={product.id}>
+
+                  <ProductCard 
+                    key={product.id}
+                    imageSrc={product.image}
+                    title={product.name}
+                    price={product.price}
+                  />
+
             ))}
           </div>
+
         </div>
+
       </div>
     </div>
   )
