@@ -26,7 +26,7 @@ const products = [
         slug: "product-2",
         category: "Category 2",
         price: 200,
-        image: "/wine-holder.jpg",
+        image: "/productmain.webp",
     },
     {
         id: 3,

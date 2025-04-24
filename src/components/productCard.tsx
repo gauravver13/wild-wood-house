@@ -9,14 +9,14 @@ interface ProductCardProps {
 
 export default function ProductCard({ imageSrc, title, price }: ProductCardProps) {
   return (
-    <div className="flex flex-col w-full h-[80vh] text-center mb-7">
-      <figure className="relative w-full h-2/3 overflow-hidden">
+    <div className="flex flex-col w-full h-[70vh] text-center mb-7">
+      <figure className="relative w-full h-full object-cover overflow-hidden">
         <Link href={"#"} className="block relative w-full h-full">
           <Image
             src={imageSrc}
             alt={title}
             fill
-            className="object-cover transition-opacity duration-200"
+            className="object-contain transition-opacity duration-200"
             sizes="100vw"
           />
         </Link>
