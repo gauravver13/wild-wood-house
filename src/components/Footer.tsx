@@ -66,19 +66,19 @@ export function Footer() {
       </div>
 
       {/* Contact + Links Section */}
-      <div className="border-t bg-slate-50 border-[#e6dcd2] py-12 px-4 md:px-10 text-[#9b3f24]">
+      <div className="border-t bg-slate-50 border-[#e6dcd2] py-12 px-4 md:px-10 font-light text-[#9b3f24]">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-24 text-left text-sm">
           {/* Get in Touch */}
           <div>
             <h3 className="font-bold uppercase tracking-wide mb-4">Get in Touch</h3>
             <p className="mb-2">+91 9136473985</p>
             <p className="mb-2">Mon - Sat - 10:30am - 07:30pm IST</p>
-            <p className="mb-2">info@unnamra.com</p>
+            <p className="mb-2">info@wildwoodhouse.com</p>
             <p className="mb-4">
-              Unnamra, Petit Hall Shopping Centre, 66, L Jaganmohandas Marg,
+              Wild-Wood-House, 66, L Jaganmohandas Marg,
               Mumbai 400006
             </p>
-            <div className="flex gap-4 mt-2">
+            <div className="flex gap-4 mt-8">
               <FaFacebookF className="hover:text-blue-700 cursor-pointer" />
               <FaInstagram className="hover:text-orange-500 cursor-pointer" />
               <FaPinterestP className="hover:text-red-600 cursor-pointer" />
@@ -108,7 +108,7 @@ export function Footer() {
       </div>
 
       {/* Bottom Line */}
-      <div className="text-center py-4 text-xs text-[#c78b71]">
+      <div className="text-right px-12 bg-slate-50 py-4 text-xs text-[#c78b71]">
         © 2025 Wild-Wood-House, All rights reserved.
       </div>
 
