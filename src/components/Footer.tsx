@@ -17,8 +17,8 @@ export function Footer() {
     <footer className="bg-[#f6f0e8] text-[#9b3f24] w-full">
       {/* Newsletter Section */}
       <div className="py-12 px-4 md:px-10 text-center flex flex-col items-center justify-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-3">BE IN THE LOOP</h2>
-        <p className="max-w-2xl italic mb-6 px-2 text-sm md:text-sm">
+        <h2 className="text-xl md:text-2xl font-bold mb-3">BE IN THE LOOP</h2>
+        <p className="max-w-2xl italic mb-6 px-2 text-xs md:text-sm">
           Enjoy a <span className="font-semibold">10% discount</span> on your
           initial online purchase by using the code{" "}
           <span className="font-bold not-italic"> WILD WOOD HOUSE </span> during
@@ -37,7 +37,7 @@ export function Footer() {
             <input
               type="email"
               placeholder="Email"
-              className="w-full py-4 px-4 pr-12 border border-[#e6dcd2] rounded-sm text-[#9b3f24] bg-transparent placeholder-[#c78b71] focus:outline-none"
+              className="w-full py-4 px-4 pr-12 border border-[#e6dcd2] rounded-sm text-[#9b3f24] bg-transparent placeholder-[#c78b71] focus:outline-none text-base"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -67,9 +67,9 @@ export function Footer() {
 
       {/* Contact + Links Section */}
       <div className="border-t bg-slate-50 border-[#e6dcd2] py-12 px-4 md:px-10 text-[#9b3f24]">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-24 text-left">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-24 text-left text-sm">
           {/* Get in Touch */}
-          <div className="text-sm">
+          <div>
             <h3 className="font-bold uppercase tracking-wide mb-4">Get in Touch</h3>
             <p className="mb-2">+91 9136473985</p>
             <p className="mb-2">Mon - Sat - 10:30am - 07:30pm IST</p>
@@ -109,8 +109,9 @@ export function Footer() {
 
       {/* Bottom Line */}
       <div className="text-center py-4 text-xs text-[#c78b71]">
-        © 2025 Unnamra, All rights reserved.
+        © 2025 Wild-Wood-House, All rights reserved.
       </div>
+
     </footer>
   );
 }
