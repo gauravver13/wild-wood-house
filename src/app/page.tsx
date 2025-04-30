@@ -125,7 +125,6 @@ export default function Home() {
 
 
         {/* Testimonial Section */}
-
         <section className="mt-14">
         <h3 className="text-center normal-case text-xl font-normal tracking-widest leading-snug">OUR CLIENTS</h3>
           
@@ -138,31 +137,6 @@ export default function Home() {
             />
           </div>
         </section>
-
-
-        {/* Award Section */}
-        {/* <section style={{ padding: "4rem 0", backgroundColor: "var(--color-accent)", color: "var(--color-primary)" }}>
-          <div className="container mx-auto text-center">
-            <h2
-              style={{ fontSize: "var(--font-size-3xl)", fontWeight: "var(--font-weight-bold)", marginBottom: "2rem" }}
-            >
-              Award-Winning Furniture
-            </h2>
-            <p style={{ fontSize: "var(--font-size-xl)", marginBottom: "2rem" }}>
-              Recognized for our quality and design excellence
-            </p>
-            <div className="flex justify-center space-x-8">
-              <div>
-                <Image src="/placeholder.svg?height=100&width=100" alt="Award 1" width={100} height={100} />
-                <p style={{ marginTop: "0.5rem" }}>Best Design 2023</p>
-              </div>
-              <div>
-                <Image src="/placeholder.svg?height=100&width=100" alt="Award 2" width={100} height={100} />
-                <p style={{ marginTop: "0.5rem" }}>Customer Choice 2023</p>
-              </div>
-            </div>
-          </div>
-        </section> */}
 
       </main>
     </div>

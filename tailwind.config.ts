@@ -79,6 +79,10 @@ module.exports = {
 			foreground: "hsl(var(--muted-foreground))",
 		  },
 		},
+		animation: {
+			scroll: 'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
+		},
+		
 		borderRadius: {
 		  lg: `var(--radius)`,
 		  md: `calc(var(--radius) - 2px)`,
