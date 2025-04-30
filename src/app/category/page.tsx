@@ -12,7 +12,7 @@ const products = [
     slug: "product-1",
     category: "Category 1",
     price: 100,
-    image: "/wine-holder.jpg",
+    image: "/art1.jpg",
     secondImage: "/productmain.webp",
   },
   {
@@ -30,7 +30,7 @@ const products = [
     slug: "product-3",
     category: "Category 1",
     price: 300,
-    image: "/wine-holder.jpg",
+    image: "/art2.jpg",
     secondImage: "/productmain.webp",
   },
   {
@@ -39,8 +39,8 @@ const products = [
     slug: "product-4",
     category: "Category 2",
     price: 400,
-    image: "/wine-holder.jpg",
-    secondImage: "/wine-holder.jpg",
+    image: "/art3.jpg",
+    secondImage: "/art1.jpg",
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ const products = [
     slug: "product-6",
     category: "Category 2",
     price: 600,
-    image: "/wine-holder.jpg",
+    image: "/art4.jpg",
     secondImage: "/wine-holder.jpg",
   },
   {
@@ -66,7 +66,7 @@ const products = [
     slug: "product-7",
     category: "Category 1",
     price: 700,
-    image: "/wine-holder.jpg",
+    image: "/art2.jpg",
     secondImage: "/wine-holder.jpg",
   },
   {
@@ -75,7 +75,7 @@ const products = [
     slug: "product-8",
     category: "Category 2",
     price: 800,
-    image: "/wine-holder.jpg",
+    image: "/art1.jpg",
     secondImage: "/wine-holder.jpg",
   },
   {

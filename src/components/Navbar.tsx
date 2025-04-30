@@ -14,6 +14,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import { useRouter } from "next/navigation"
+import CartSheet from "./CartSheet"
 
 const categories = ["Living Room", "Bedroom", "Dining Room", "Office", "Decor"]
 
@@ -44,7 +45,7 @@ export function Navbar() {
             href="/" 
             className="relative z-10 text-xl md:text-2xl font-bold tracking-tight transition-colors duration-300 group-hover:text-white"
           >
-            FurniCraft
+            Wild Wood House
           </Link>
 
       {/* // HERE SHOULD BE AN AXIOS REQUEST TO CHECK TO SHOW THE USER APPROPRIATE CATEGORY PRODUCTS.  */}
@@ -122,46 +123,51 @@ export function Navbar() {
             {/* SEPERATE THIS  */}
             {/* // this should be taken care of  */}
             {/* Cart Sheet */}
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="icon"
-                  className="h-9 w-9 transition-colors duration-300 hover:bg-zinc-100 group-hover:text-white group-hover:hover:bg-white/10"
-                >
-                  <ShoppingCart className="h-4 w-4" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="mr-2 -mt-6 w-full max-w-md text-white">
-                <SheetHeader className="bg-pink-400 flex">
-                  <SheetTitle className="bg-green-500 mt-2">Shopping Cart
-                  </SheetTitle>
+            {/* <div>
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button 
+                    variant="ghost" 
+                    size="icon"
+                    className="h-9 w-9 transition-colors duration-300 hover:bg-zinc-100 group-hover:text-white group-hover:hover:bg-white/10"
+                  >
+                    <ShoppingCart className="h-4 w-4" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="mr-2 -mt-6 w-full max-w-md text-white">
+                  <SheetHeader className="bg-pink-400 flex">
+                    <SheetTitle className="bg-green-500 mt-2">Shopping Cart
+                    </SheetTitle>
 
-                  <SheetDescription>
-                    Your cart items appear here
-                  </SheetDescription>
-                </SheetHeader>
-                <div className="mt-0 bg-yellow-500">
-                  <div className="space-y-4">
-                    {/* Cart Items would go here */}
-                    <div className="text-center text-muted-foreground">
-                      Your cart is empty
+                    <SheetDescription>
+                      Your cart items appear here
+                    </SheetDescription>
+                  </SheetHeader>
+                  <div className="mt-0 bg-yellow-500">
+                    <div className="space-y-4">
+                      {/* Cart Items would go here *
+                      <div className="text-center text-muted-foreground">
+                        Your cart is empty
+                      </div>
+                    </div>
+                    <div className="mt-8 space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span>Total</span>
+                        {/* FUNCTIONAL COMPONENT" *
+                        <span className="font-semibold">INR 0.00</span>
+                      </div>
+                      {/* // SHOULD BE  A LINK  *
+                      <Button className="w-full">
+                        Checkout
+                      </Button>
                     </div>
                   </div>
-                  <div className="mt-8 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span>Total</span>
-                      {/* FUNCTIONAL COMPONENT" */}
-                      <span className="font-semibold">INR 0.00</span>
-                    </div>
-                    {/* // SHOULD BE  A LINK  */}
-                    <Button className="w-full">
-                      Checkout
-                    </Button>
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetContent>
+              </Sheet>
+            </div> */}
+            {/* <div></div> */}
+
+            <CartSheet />
 
 
 

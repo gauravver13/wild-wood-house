@@ -7,15 +7,16 @@ import { Button } from "@/components/ui/button"
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
+      
       <Navbar />
       
-      <main className="flex-grow ">
+      <main className="flex-grow">
         {/* Hero Section with Banner */}
         <section className="relative h-[600px]">
           {/* Banner Image */}
           <div className="absolute inset-0">
             <Image
-              src="/banner1.jpg"
+              src="/bannerN.jpg"
               alt="Elegant Furniture Collection"
               fill
               className="object-cover brightness-50"
@@ -27,7 +28,7 @@ export default function Home() {
 
           {/* Content Overlay */}
           <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-white text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-4xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-4xl pt-64">
               Transform Your Space with Elegant Furniture
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-8 max-w-2xl">
@@ -67,11 +68,11 @@ export default function Home() {
                   }}
                 >
                   <Image
-                    src={`/placeholder.svg?height=300&width=400`}
+                    src={`/art3.jpg`}
                     alt={`Product ${i}`}
                     width={400}
                     height={300}
-                    className="w-full h-48 object-cover mb-4 rounded"
+                    className="w-full h-48 object-contain mb-4 rounded"
                   />
                   <h3
                     style={{
@@ -176,7 +177,7 @@ export default function Home() {
         </section>
 
         {/* Award Section */}
-        <section style={{ padding: "4rem 0", backgroundColor: "var(--color-accent)", color: "var(--color-primary)" }}>
+        {/* <section style={{ padding: "4rem 0", backgroundColor: "var(--color-accent)", color: "var(--color-primary)" }}>
           <div className="container mx-auto text-center">
             <h2
               style={{ fontSize: "var(--font-size-3xl)", fontWeight: "var(--font-weight-bold)", marginBottom: "2rem" }}
@@ -197,9 +198,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
+
       </main>
-      <Footer />
     </div>
   )
 }
