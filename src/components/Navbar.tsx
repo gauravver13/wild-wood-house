@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Input } from "@/components/ui/input"
@@ -19,6 +19,18 @@ import CartSheet from "./CartSheet"
 const categories = ["Living Room", "Bedroom", "Dining Room", "Office", "Decor"]
 
 export function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+  
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   // SETISAUTHENTICATED:::
   const [isAuthenticated, setIsAuthenticated] = useState(false) // Add this state
@@ -30,13 +42,13 @@ export function Navbar() {
   // CHECK OUT TODOS: fix this in 1 session 
   // https://www.instagram.com/claymangoindia
   // HOUSE OF THINGS LIKE SEARCH_BAR
-  // TODO:    CONSIDER **************************CLAYMANGO************************8
+  // TODO: CONSIDER **************************CLAYMANGO************************8
   // TODO: TO DISCUSS OVER NAVBAR: BG-DOWN_LINE-1PX 
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent border-opacity-100 border-b border-zinc-200 transition-all duration-300 ease-in-out group">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent border-opacity-100 border-b border-zinc-200 transition-all duration-300 ease-in-out group text-white">
       {/* Hover Effect Overlay */}
-      <div className="absolute inset-0 bg-red-600 transform origin-top scale-y-0 transition-transform duration-300 ease-in-out group-hover:scale-y-100" />
+      <div className={`absolute inset-0 bg-red-600 transform origin-top transition-transform duration-300 ease-in-out ${isScrolled ? 'scale-y-100' : 'scale-y-0'}`} />
       
       <div className="relative container mx-auto px-4 lg:px-8">
         <nav className="flex items-center justify-between h-16">
@@ -189,6 +201,7 @@ export function Navbar() {
 
           </div>
         </nav>
+
 
         {/* Mobile Menu */}
         {isMenuOpen && (
