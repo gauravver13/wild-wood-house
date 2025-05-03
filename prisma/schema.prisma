@@ -51,11 +51,11 @@ model Order {
   shippingAddress String
   status         String   @default("Pending")
   paymentStatus  String   @default("Pending")
-  items         OrderItem[]
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  items          OrderItem[]
   user           User     @relation(fields: [userId], references: [id])
   payment        Payment?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Cart {

@@ -117,6 +117,7 @@ export default function Home() {
                           secondImageSrc={product.secondImage}
                           title={product.name}
                           price={product.price}
+                          link={"/products/abc"}
                         />
                       ))}
                     </div>     

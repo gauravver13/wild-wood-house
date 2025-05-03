@@ -10,9 +10,10 @@ interface ProductCardProps {
   secondImageSrc: string;
   title: string;
   price: number;
+  link:  string;
 }
 
-export default function ProductCard({ imageSrc, secondImageSrc, title, price }: ProductCardProps) {
+export default function ProductCard({ imageSrc, secondImageSrc, title, price, link }: ProductCardProps) {
   const [hoverImage, setHoverImage] = useState(imageSrc);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -45,7 +46,7 @@ export default function ProductCard({ imageSrc, secondImageSrc, title, price }: 
           setIsHovering(true);
         }}
       >
-        <Link href="#" className="block relative w-full h-full">
+        <Link href={link} className="block relative w-full h-full">
           <Image
             src={hoverImage}
             alt={title}
@@ -74,7 +75,7 @@ export default function ProductCard({ imageSrc, secondImageSrc, title, price }: 
       </figure>
 
       <div className="flex flex-col justify-center h-[20%] px-4">
-        <Link href="#" className="font-medium uppercase text-lg mb-1 truncate">
+        <Link href={link} className="font-medium uppercase text-lg mb-1 truncate">
           {title}
         </Link>
         <span className="text-red-500 font-normal text-sm truncate">

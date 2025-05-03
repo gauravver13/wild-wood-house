@@ -14,6 +14,7 @@ const products = [
     price: 100,
     image: "/art1.jpg",
     secondImage: "/productmain.webp",
+    link: "/products/abc",
   },
   {
     id: 2,
@@ -23,6 +24,8 @@ const products = [
     price: 200,
     image: "/productmain.webp",
     secondImage: "/productmain.webp",
+    link: "/products/abc",
+
   },
   {
     id: 3,
@@ -32,6 +35,7 @@ const products = [
     price: 300,
     image: "/art2.jpg",
     secondImage: "/productmain.webp",
+    link: "/products/abc",
   },
   {
     id: 4,
@@ -41,6 +45,7 @@ const products = [
     price: 400,
     image: "/art3.jpg",
     secondImage: "/art1.jpg",
+    link: "/products/abc",
   },
   {
     id: 5,
@@ -50,6 +55,7 @@ const products = [
     price: 500,
     image: "/productmain.webp",
     secondImage: "/wine-holder.jpg",
+    link: "/products/abc",
   },
   {
     id: 6,
@@ -59,6 +65,7 @@ const products = [
     price: 600,
     image: "/art4.jpg",
     secondImage: "/wine-holder.jpg",
+    link: "/products/abc",
   },
   {
     id: 7,
@@ -68,6 +75,7 @@ const products = [
     price: 700,
     image: "/art2.jpg",
     secondImage: "/wine-holder.jpg",
+    link: "/products/abc",
   },
   {
     id: 8,
@@ -77,6 +85,7 @@ const products = [
     price: 800,
     image: "/art1.jpg",
     secondImage: "/wine-holder.jpg",
+    link: "/products/abc",
   },
   {
     id: 9,
@@ -86,6 +95,7 @@ const products = [
     price: 900,
     image: "/wine-holder.jpg",
     secondImage: "/wine-holder.jpg",
+    link: "/products/abc",
   },
   {
     id: 10,
@@ -95,6 +105,7 @@ const products = [
     price: 1000,
     image: "/wine-holder.jpg",
     secondImage: "/wine-holder.jpg",
+    link: "/products/abc",
   },
 ]
 
@@ -180,6 +191,7 @@ export default function ProductsPage({  }) {
                 secondImageSrc={product.secondImage}
                 title={product.name}
                 price={product.price}
+                link={product.link}
               />
             ))}
           </div>
