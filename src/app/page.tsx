@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image"
 import { Navbar } from "@/components/Navbar"
-import { Footer }  from "@/components/Footer"
 import { Button } from "@/components/ui/button"
 import CategoryCard from "@/components/ui/categoryCard"
 import ProductCard from "@/components/productCard"
@@ -91,20 +90,20 @@ export default function Home() {
         </section>
 
         {/* Explore by Category Section  */}
-                    <div className="flex relative sm:w-full px-4 flex-col my-24 items-center">
-                        <div className="flex flex-col mb-8 ">
-                            <div className="w-full mx-auto items-center rounded-xl px-20 py-4">
-                                <h3 className=" normal-case text-xl font-normal tracking-widest leading-snug">DISCOVER WILD-WOOD-HOUSE</h3>
-                            </div>
-                        </div>
-        
-                        <div className=" relative max-w-none w-full grid px-4 sm:grid-cols-1 md:grid-cols-2">
-                            <CategoryCard imageUrl="/category1.png" slug="/where-it-routes" title="" />
-                            <CategoryCard imageUrl="/category2.png" slug="/where-it-routes" title="" />
-                            <CategoryCard imageUrl="/category2.png" slug="/where-it-routes" title="" />
-                            <CategoryCard imageUrl="/category1.png" slug="/where-it-routes" title="" />
-                        </div>
-                    </div>
+        <div className="flex relative sm:w-full px-4 flex-col my-24 items-center">
+            <div className="flex flex-col mb-8 ">
+                <div className="w-full mx-auto items-center rounded-xl px-20 py-4">
+                    <h3 className=" normal-case text-xl font-normal tracking-widest leading-snug">DISCOVER WILD-WOOD-HOUSE</h3>
+                </div>
+            </div>
+
+            <div className=" relative max-w-none w-full grid px-4 sm:grid-cols-1 md:grid-cols-2">
+                <CategoryCard imageUrl="/category1.png" slug="/where-it-routes" title="" />
+                <CategoryCard imageUrl="/category2.png" slug="/where-it-routes" title="" />
+                <CategoryCard imageUrl="/category2.png" slug="/where-it-routes" title="" />
+                <CategoryCard imageUrl="/category1.png" slug="/where-it-routes" title="" />
+            </div>
+        </div>
         
 
         {/* Product Section */}
