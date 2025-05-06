@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import CategoryCard from "@/components/ui/categoryCard"
 import ProductCard from "@/components/productCard"
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards"
+import Banner from "@/components/ui/bannerHero"
+import BannerHero from "@/components/ui/bannerHero"
 
 
 
@@ -49,10 +51,12 @@ export default function Home() {
       
       <main className="flex-grow">
 
+
+
         {/* Hero Section with Banner */}
         <section className="relative h-[600px]">
           {/* Banner Image */}
-          <div className="absolute inset-0">
+          {/* <div className="absolute inset-0">
               <Image
                 src="/bannerN.jpg"
                 alt="Elegant Furniture Collection"
@@ -62,10 +66,15 @@ export default function Home() {
                 priority
                 quality={100}
               />
-          </div>
+          </div> */}
+
+        <BannerHero />
+
+
+
 
           {/* Content Overlay */}
-          <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-white text-center">
+          {/* <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-white text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-4xl pt-64">
               Transform Your Space with Elegant Furniture
             </h1>
@@ -78,7 +87,9 @@ export default function Home() {
             >
               Shop Now
             </Button>
-          </div>
+          </div> */}
+
+
         </section>
 
         {/* BRIEFING ABOUT US  */}

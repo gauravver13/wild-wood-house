@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react"
 import ProductCard from "@/components/productCard"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Banner from "@/components/ui/banner"
+import Banner from "@/components/ui/bannerCategory"
 
 const products = [
   {

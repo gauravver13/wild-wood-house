@@ -75,7 +75,25 @@ body {
   .backdrop-blur {
     @apply backdrop-blur-md;
   }
+
+  .animate-spin-slow {
+    animation: spin 4s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
+
+/* @layer utilities {
+
+} */
 
 
 
