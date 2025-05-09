@@ -167,7 +167,9 @@ export default function LoginPage() {
           </div>
 
           <div className="mt-6">
+          
             <GoogleAuthButton action="Log in" />
+
           </div>
         </div>
 
