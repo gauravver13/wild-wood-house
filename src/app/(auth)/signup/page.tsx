@@ -56,7 +56,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#fdf9f4] px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#fdf9f4] px-4 mt-16">
       <div className="w-full max-w-5xl flex flex-col md:flex-row bg-white rounded-2xl shadow-lg overflow-hidden">
         {/* Left Visual Section */}
         <div className="w-full md:w-1/2 bg-[#fff6ec] flex flex-col items-center justify-center p-10">
