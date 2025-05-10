@@ -69,7 +69,7 @@ export default function LoginPage() {
         {/* Left Visual Section */}
         <div className="w-1/2 bg-[#fff6ec] flex flex-col items-center justify-center p-10">
           {/* <Image src={lampImg} alt="Lamp" className="w-24 h-auto mb-6" /> */}
-          <Image src={""} alt="Lamp" className="w-24 h-auto mb-6" />
+          <Image src={"/art1.jpg"} width={100} height={100} alt="Lamp" className="w-24 h-auto mb-6" />
           <p className="text-xl font-bold text-center text-gray-800 leading-relaxed">
             “ LESS ORDINARY <br /> MORE YOU ”
           </p>
