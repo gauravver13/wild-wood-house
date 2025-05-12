@@ -42,8 +42,8 @@ export function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-transparent border-opacity-100 border-b border-zinc-200 transition-all duration-300 ease-in-out group text-white">
       <div
-        className={`absolute inset-0 bg-red-600 transform origin-top transition-transform duration-300 ease-in-out ${
-          isScrolled ? "scale-y-100" : "scale-y-0"
+        className={`absolute inset-0 bg-black text-white opacity-50 transform origin-top transition-transform duration-300 ease-in-out ${
+          isScrolled ? "scale-y-100" : "scale-y-0 "
         }`}
       />
       <div className="relative container mx-auto px-4 lg:px-8">
@@ -62,7 +62,7 @@ export function Navbar() {
               <Link
                 key={category}
                 href={`/category/${category.toLowerCase().replace(" ", "-")}`}
-                className="relative z-10 text-sm font-medium text-zinc-700 transition-colors duration-300 hover:text-primary group-hover:text-white/90 hover:group-hover:text-white"
+                className="relative z-10 text-sm font-medium transition-colors duration-300 hover:text-primary group-hover:text-white/90 hover:group-hover:text-white"
               >
                 {category}
               </Link>

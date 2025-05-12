@@ -7,6 +7,7 @@ import ProductCard from "@/components/productCard"
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards"
 import Banner from "@/components/ui/bannerHero"
 import BannerHero from "@/components/ui/bannerHero"
+import Aboutus from "@/components/AboutUs"
 
 
 
@@ -92,13 +93,14 @@ export default function Home() {
 
         </section>
 
-        {/* BRIEFING ABOUT US  */}
+        {/* BRIEFING ABOUT US 
         <section className="relative pt-12 mt-4">
             <div className="mb-5 w-full leading-normal text-center text-primary tracking-wider font-semibold">Welcome to Wild Wood House</div>
             <p className="mb-8 w-full font-light leading-normal text-center text-primary tracking-wider">We celebrate creativity and design, revel in handcrafted beauty and honor culture and community.</p>
             
             <p className=" w-full font-light leading-normal text-center text-primary flex flex-wrap lg:px-44 sm:px-24 md:px-36 tracking-widest">Wild Wood House was born from the desire to create a space where artistic excellence could be celebrated in a myriad ways. It was therefore envisioned as a platform where the spirit of creativity, exquisite design and the magic of craftmanship would all find synergy. Through our gallery ,our carefully crafted products and vibrant events, we aspire to give voice to the joy of artistic expression.</p>
-        </section>
+        </section> */}
+        <Aboutus />
 
         {/* Explore by Category Section  */}
         <div className="flex relative sm:w-full px-4 flex-col my-24 items-center">
