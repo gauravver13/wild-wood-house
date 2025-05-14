@@ -4,8 +4,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://postgres:Hogwarts13@localhost:5432/wwh"
-  // url     = env("DATABASE_URL")
+ 
+  url     = env("DATABASE_URL")
   // url      = "postgresql://janedoe:mypassword@localhost:5432/mydb?schema=sample"
 }
 

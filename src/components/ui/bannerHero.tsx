@@ -17,6 +17,11 @@ const slides = [
     image: "/bannerHero1.png",
     title: "AUTHENTIC, ARTISANAL, AESTHETIC",
   },
+  {
+    id: 4,
+    image: "/banner3.png",
+    title: "Wood that connects you with Nature",
+  },
 ];
 
 export default function BannerHero() {
