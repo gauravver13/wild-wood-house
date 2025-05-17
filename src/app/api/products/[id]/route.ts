@@ -1,22 +1,22 @@
-import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import prisma from "@/lib/prisma";
 
 export async function GET(
-  request: Request,
+  _req: Request,
   { params }: { params: { id: string } }
 ) {
-  try {
-    const id = parseInt(params.id);
-    
-    if (isNaN(id)) {
-      return NextResponse.json(
-        { error: "Invalid ID format" },
-        { status: 400 }
-      );
-    }
+  const id = Number(params.id);
 
+  if (Number.isNaN(id)) {
+    return NextResponse.json(
+      { error: "Invalid ID format" },
+      { status: 400 }
+    );
+  }
+
+  try {
     const product = await prisma.product.findUnique({
-      where: { id }
+      where: { id },
     });
 
     if (!product) {
@@ -28,9 +28,9 @@ export async function GET(
 
     return NextResponse.json(product, { status: 200 });
   } catch (error) {
-    console.error("Error fetching product:", error);
+    console.error("Failed to fetch product:", error);
     return NextResponse.json(
-      { error: "Failed to fetch product" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

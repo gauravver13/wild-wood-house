@@ -2,11 +2,11 @@ import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(
-  request: Request,
+  // request: Request,
   { params }: { params: { id: string } }
 ) {
   try {
-    const categoryId = parseInt(params.id);
+    const categoryId = await parseInt(params.id);
 
     // Validate categoryId
     if (isNaN(categoryId)) {
